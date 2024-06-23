@@ -1,0 +1,6 @@
+hello привет
+bye пока
+mouse мышь
+window окно
+table стол
+bread хлеб
