@@ -14,7 +14,7 @@ enum class Menu(val pointer: Int) {
     EXIT(0),
 }
 
-fun loadDictionary(file: File): MutableList<Word>{
+fun loadDictionary(file: File): MutableList<Word> {
     val dictionary: MutableList<Word> = mutableListOf()
     file.readLines().forEach {
         val line = it.split("|")
@@ -23,6 +23,12 @@ fun loadDictionary(file: File): MutableList<Word>{
         }
     }
     return dictionary
+}
+
+fun statistics(dictionary: MutableList<Word>): String {
+    val learnedWordsCount = dictionary.count { it.correctAnswerCount >= 3 }
+    val progressPercentage = learnedWordsCount * 100 / 7
+    return "Выучено $learnedWordsCount из ${dictionary.size} | $progressPercentage%"
 }
 
 fun main() {
@@ -34,9 +40,7 @@ fun main() {
         commandMenuText.forEach { println(it) }
         when (readln().toIntOrNull()) {
             Menu.LEARN.pointer -> println(commandMenuText[1])
-            Menu.STATISTICS.pointer -> dictionary.forEach {
-                println("${it.original} - ${it.rus}. Отвечено верно - ${it.correctAnswerCount} раз ")
-            }
+            Menu.STATISTICS.pointer -> println(statistics(dictionary))
             Menu.EXIT.pointer -> {
                 println("Выходим")
                 break

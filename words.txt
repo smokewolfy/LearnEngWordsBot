@@ -1,7 +1,7 @@
-hello|привет|
-bye|пока|0
-mouse|мышь|0
-window|окно|0
+hello|привет|2
+bye|пока|3
+mouse|мышь|4
+window|окно|3
 table|стол|0
 bread|хлеб|0
-good|хороший
+good|хороший|5
