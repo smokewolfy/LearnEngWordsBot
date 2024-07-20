@@ -25,22 +25,22 @@ fun loadDictionary(file: File): MutableList<Word> {
     return dictionary
 }
 
-fun statistics(dictionary: MutableList<Word>): String {
+fun calcStatistics(dictionary: List<Word>): String {
     val learnedWordsCount = dictionary.count { it.correctAnswerCount >= 3 }
-    val progressPercentage = learnedWordsCount * 100 / 7
+    val progressPercentage = learnedWordsCount * 100 / dictionary.size
     return "Выучено $learnedWordsCount из ${dictionary.size} | $progressPercentage%"
 }
 
 fun main() {
     val file = File("words.txt")
-    val dictionary: MutableList<Word> = loadDictionary(file)
+    val dictionary: List<Word> = loadDictionary(file)
     val commandMenuText: List<String> = listOf("Меню:", "1 - Учить слова", "2 - Статистика", "0 - Выход")
 
     while (true) {
         commandMenuText.forEach { println(it) }
         when (readln().toIntOrNull()) {
             Menu.LEARN.pointer -> println(commandMenuText[1])
-            Menu.STATISTICS.pointer -> println(statistics(dictionary))
+            Menu.STATISTICS.pointer -> println(calcStatistics(dictionary))
             Menu.EXIT.pointer -> {
                 println("Выходим")
                 break
