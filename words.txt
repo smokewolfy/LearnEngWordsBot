@@ -1,6 +1,7 @@
-hello привет
-bye пока
-mouse мышь
-window окно
-table стол
-bread хлеб
+hello|привет|
+bye|пока|0
+mouse|мышь|0
+window|окно|0
+table|стол|0
+bread|хлеб|0
+good|хороший
